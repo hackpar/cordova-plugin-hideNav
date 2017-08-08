@@ -18,12 +18,12 @@
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="HideNavPlugin">
-        <param name="android-package" value="com.Qinxue.HideNav.NavHidePlugin"/>
+        <param name="android-package" value="com.Qinxue.HideNav.HideNavPlugin"/>
         <param name="onload" value="true" />
       </feature>
     </config-file>
 
-    <source-file src="src/android/HideNavPlugin.java" target-dir="src/com/Qinxue/NavHide" />
+    <source-file src="src/android/HideNavPlugin.java" target-dir="src/com/Qinxue/HideNav" />
   </platform>
 
   
