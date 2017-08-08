@@ -1,4 +1,4 @@
-package com.artraktiv.NavHide;
+package com.Qinxue.HideNav;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
