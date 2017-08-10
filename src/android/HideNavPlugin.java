@@ -20,7 +20,6 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
-import com.airbnb.lottie.LottieAnimationView;
 
 public class HideNavPlugin extends CordovaPlugin {
 
@@ -54,32 +53,18 @@ public class HideNavPlugin extends CordovaPlugin {
 
 	public void hideNav(final CallbackContext callbackContext) {
 
+       cordova.getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+
               View decorView = cordova.getActivity().getWindow().getDecorView();
-              int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                                      | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                                      | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                                      | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-                decorView.setSystemUiVisibility(uiOptions);
-
-            //if(getDpi() > cordova.getActivity().getWindowManager().getDefaultDisplay().getHeight()){
-            //}
-            LottieAnimationView animationView = (LottieAnimationView) cordova.getActivity().getWindow().getDecorView().findViewById(0);
-            animationView.setAnimation("data.json");
-            animationView.loop(true);
-            animationView.playAnimation();
-            if (animationView.isAnimating()) {
-
-                callbackContext.success("test");
-            }
+                  decorView.setSystemUiVisibility(
+                          View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                          | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 	}
 	public void showNav() {
 
-              View decorView = cordova.getActivity().getWindow().getDecorView();
-              int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                                      | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                                      | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                                      | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-                decorView.setSystemUiVisibility(uiOptions);
+
+       cordova.getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 	}
 
 
