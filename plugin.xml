@@ -23,6 +23,7 @@
       </feature>
     </config-file>
 
+    <framework src="animate.gradle" custom="true" type="gradleReference"/>
     <source-file src="src/android/HideNavPlugin.java" target-dir="src/com/Qinxue/HideNav" />
   </platform>
 
