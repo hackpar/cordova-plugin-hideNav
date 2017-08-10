@@ -19,7 +19,8 @@ import org.apache.cordova.LOG;
 import org.apache.cordova.PluginResult;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import org.json.JSONArray;
+import com.airbnb.lottie.LottieAnimationView;
 
 public class HideNavPlugin extends CordovaPlugin {
 
@@ -41,8 +42,7 @@ public class HideNavPlugin extends CordovaPlugin {
 
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
             if("hideNav".equals(action)){
-                callbackContext.success("hide");
-                hideNav();
+                hideNav(callbackContext);
             }
             if("showNav".equals(action)){
                 callbackContext.success("show");
@@ -52,13 +52,7 @@ public class HideNavPlugin extends CordovaPlugin {
         return false;
     }
 
-	public void hideNav() {
-		// getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-		//WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		//ViewGroup view = (ViewGroup)getWindow().getDecorView();
-		//view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-		//super.loadUrl(Config.getStartUrl());
+	public void hideNav(final CallbackContext callbackContext) {
 
               View decorView = cordova.getActivity().getWindow().getDecorView();
               int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -69,6 +63,14 @@ public class HideNavPlugin extends CordovaPlugin {
 
             //if(getDpi() > cordova.getActivity().getWindowManager().getDefaultDisplay().getHeight()){
             //}
+            LottieAnimationView animationView = (LottieAnimationView) cordova.getActivity().getWindow().getDecorView().findViewById(0);
+            animationView.setAnimation("data.json");
+            animationView.loop(true);
+            animationView.playAnimation();
+            if (animationView.isAnimating()) {
+
+                callbackContext.success("test");
+            }
 	}
 	public void showNav() {
 
